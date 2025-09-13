@@ -10,7 +10,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # MongoDB connection
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient(os.getenv('mongodb+srv://23kq1a0228_db_user:1234@cluster0.gmgtxql.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'))
+try:
+    client.server_info()  # Forces connection
+except Exception as e:
+    print("MongoDB connection failed:", e)
 db = client['voting_system']
 users_collection = db['users']
 votes_collection = db['votes']
