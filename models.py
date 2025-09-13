@@ -12,7 +12,7 @@ load_dotenv()
 # MongoDB connection
 client = MongoClient(os.getenv('mongodb+srv://23kq1a0228_db_user:1234@cluster0.gmgtxql.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'))
 try:
-    client.server_info()  # Forces connection
+    print("Databases:", client.list_database_names())
 except Exception as e:
     print("MongoDB connection failed:", e)
 db = client['voting_system']
