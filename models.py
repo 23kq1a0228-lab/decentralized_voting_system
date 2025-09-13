@@ -1,19 +1,19 @@
+from pymongo import MongoClient
 from datetime import datetime
 import random
 import string
 from twilio.rest import Client
 import os
-from pymongo import MongoClient
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
 # MongoDB connection
-client = MongoClient(os.getenv("MONGO_URI"))
-db = client["voting_system"]
-users_collection = db["users"]
-votes_collection = db["votes"]
+client = MongoClient('mongodb+srv://23kq1a0228_db_user:1234@cluster0.gmgtxql.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+db = client['voting_system']
+users_collection = db['users']
+votes_collection = db['votes']
 
 # Twilio configuration
 twilio_client = Client(
