@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h2><i class="fas fa-key"></i> OTP Verification</h2>
+        <p>Enter the OTP sent to your mobile number ending in {{ mobile }}</p>
+        
+        {% if error %}
+        <div class="alert alert-error">
+            <i class="fas fa-exclamation-circle"></i> {{ error }}
+        </div>
+        {% endif %}
+        
+        <form id="otpForm" method="POST">
+            <div class="form-group">
+                <label for="otp">One-Time Password</label>
+                <input type="text" id="otp" name="otp" placeholder="Enter 4-digit OTP" maxlength="4" required>
+                <small>OTP expires in 5 minutes</small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-check-circle"></i> Verify & Proceed to Vote
+            </button>
+        </form>
+        
+        <div class="form-footer">
+            <p>Didn't receive OTP? <a href="{{ url_for('register') }}">Resend OTP</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

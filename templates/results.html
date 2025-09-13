@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="results-container">
+    <div class="results-header">
+        <h2><i class="fas fa-poll"></i> Election Results</h2>
+        <p>Live voting results - {{ total_votes }} votes counted</p>
+    </div>
+    
+    <div class="results-summary">
+        <div class="summary-card">
+            <h3>Total Votes</h3>
+            <p class="summary-value">{{ total_votes }}</p>
+        </div>
+        <div class="summary-card">
+            <h3>Candidates</h3>
+            <p class="summary-value">{{ results|length }}</p>
+        </div>
+        <div class="summary-card">
+            <h3>Status</h3>
+            <p class="summary-value">Live</p>
+        </div>
+    </div>
+    
+    <div class="results-list">
+        {% for candidate in results %}
+        <div class="result-item">
+            <div class="candidate-info">
+                <h3>{{ candidate.name }}</h3>
+                <p class="candidate-party">{{ candidate.party }}</p>
+            </div>
+            <div class="result-details">
+                <div class="votes-count">{{ candidate.votes }} votes</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ candidate.percentage }}%"></div>
+                </div>
+                <div class="percentage">{{ candidate.percentage }}%</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="results-footer">
+        <a href="{{ url_for('results') }}" class="btn btn-secondary">
+            <i class="fas fa-redo"></i> Cast Another Vote
+        </a>
+    </div>
+</div>
+{% endblock %}

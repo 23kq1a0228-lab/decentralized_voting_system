@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="voting-container">
+    <div class="voting-header">
+        <h2><i class="fas fa-vote-yea"></i> Cast Your Vote</h2>
+        <p>Select your preferred candidate. Your vote is secure and anonymous.</p>
+    </div>
+    
+    {% if error %}
+    <div class="alert alert-error">
+        <i class="fas fa-exclamation-circle"></i> {{ error }}
+    </div>
+    {% endif %}
+    
+    <form id="voteForm" method="POST">
+        <div class="candidates-grid">
+            {% for candidate in candidates %}
+            <div class="candidate-card">
+                <input type="radio" name="candidate" id="candidate{{ candidate.id }}" value="{{ candidate.id }}" required>
+                <label for="candidate{{ candidate.id }}" class="candidate-label">
+                    <div class="candidate-info">
+                        <h3>{{ candidate.name }}</h3>
+                        <p class="candidate-party">{{ candidate.party }}</p>
+                    </div>
+                    <div class="candidate-symbol">
+                        <span>{{ candidate.symbol }}</span>
+                    </div>
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block">
+            <i class="fas fa-paper-plane"></i> Cast Vote
+        </button>
+    </form>
+</div>
+{% endblock %}

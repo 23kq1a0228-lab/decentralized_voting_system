@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-content">
+        <h2>Secure Aadhaar-Based Voting</h2>
+        <p>Participate in elections with our secure, decentralized voting platform</p>
+        <div class="hero-buttons">
+            <a href="{{ url_for('register') }}" class="btn btn-primary">Register to Vote</a>
+            <a href="{{ url_for('results') }}" class="btn btn-secondary">View Results</a>
+        </div>
+    </div>
+</div>
+
+<div class="features">
+    <div class="feature-card">
+        <i class="fas fa-shield-alt feature-icon"></i>
+        <h3>Secure Authentication</h3>
+        <p>Aadhaar-linked mobile OTP verification ensures voter identity</p>
+    </div>
+    <div class="feature-card">
+        <i class="fas fa-link feature-icon"></i>
+        <h3>Decentralized</h3>
+        <p>Blockchain-inspired technology prevents tampering</p>
+    </div>
+    <div class="feature-card">
+        <i class="fas fa-user-shield feature-icon"></i>
+        <h3>Anonymous Voting</h3>
+        <p>Your vote is private and cannot be traced back to you</p>
+    </div>
+</div>
+{% endblock %}

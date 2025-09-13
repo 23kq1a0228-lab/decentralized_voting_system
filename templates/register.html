@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h2><i class="fas fa-user-plus"></i> Voter Registration</h2>
+        <p>Register with your Aadhaar number to participate in the election</p>
+        
+        {% if error %}
+        <div class="alert alert-error">
+            <i class="fas fa-exclamation-circle"></i> {{ error }}
+        </div>
+        {% endif %}
+        
+        <form id="registerForm" method="POST">
+            <div class="form-group">
+                <label for="aadhaar">Aadhaar Number</label>
+                <input type="text" id="aadhaar" name="aadhaar" placeholder="Enter 12-digit Aadhaar number" maxlength="12" required>
+                <small>Enter your 12-digit Aadhaar number</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" name="mobile" placeholder="Enter 10-digit mobile number" maxlength="10" required>
+                <small>We'll send an OTP to this number</small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-paper-plane"></i> Register & Send OTP
+            </button>
+        </form>
+        
+        <div class="form-footer">
+            <p>Already registered? <a href="{{ url_for('otp_verification') }}">Verify OTP</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

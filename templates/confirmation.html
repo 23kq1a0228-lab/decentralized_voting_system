@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="confirmation">
+    <h2>Thank you for voting!</h2>
+    <p>Your vote has been successfully recorded.</p>
+    <a href="{{ url_for('results') }}" class="btn btn-primary">View Results</a>
+</div>
+{% endblock %}
